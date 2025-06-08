@@ -5,9 +5,12 @@ import dotenv from "dotenv";
 import { initDB } from "./config/db.js";
 import rateLimiter from "./middleware/rateLimiter.js";
 import transactionsRoute from "./routes/transactionsRoute.js";
+import job from "./config/cron.js";
 dotenv.config();
 
 const app = express();
+
+if(process.env.NODE_ENV==="production") job.start();
 app.use(rateLimiter)
 //built in middleware // if it is not added the the things we are typing to access will get undefined
 app.use(express.json());
@@ -19,8 +22,9 @@ app.use(express.json());
 // })
 const PORT = process.env.PORT || 5001;
 
-
-
+app.get("/api/health",(req,res)=>{
+  res.status.json({status:"ok"});
+})
 // app.get("/",(req,res)=>{
 //   res.send("It is working");
 // })
