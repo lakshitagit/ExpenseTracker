@@ -2,9 +2,15 @@
 
 import { useCallback, useState } from "react"
 import { Alert } from "react-native";
+import { API_URL } from "../constants/api";
 
-const API_URL="http://localhost:5002/api"
-
+// const API_URL="https://expensetracker-ks3z.onrender.com/api"
+/*
+since for live apis we have used free render site
+which will get inactive after 15 minutes of unuse 
+after that it will take time to load
+so to avoid that we are using cronjobs 
+*/
 export const useTransactions = (userId)=>{
     const [transactions, setTransactions]=useState([]);
     const [summary, setSummary]=useState({
