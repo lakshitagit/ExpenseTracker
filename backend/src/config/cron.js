@@ -20,7 +20,7 @@ export default job;
 //how to define a schedule?
 //you define a schedule using a cron expression, which consists of 5 fields representing
 //MINUTE , HOUR< DAY of the month, day of the week
-
+//cron job
 // *14 **** - every 14 miinutes
 //* 0 0 * * 0 - At midnight on every sunday
 //* 30 3 15 * * - At 3:30Am on the 15th of every month
